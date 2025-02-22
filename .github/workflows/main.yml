@@ -35,7 +35,8 @@ jobs:
           HOST: ${{ secrets.EC2_HOST }}
           USER: ${{ secrets.EC2_USER }}
         run: |
-          echo "$PRIVATE_KEY" > aglet-serverkey.pem
-          chmod 600 aglet-serverkey.pem
-          scp -i private_key.pem -r build/* $USER@$HOST:/var/www/frontend-prod/
-          ssh -i private_key.pem $USER@$HOST "sudo systemctl restart nginx"
+          # Copy the build folder to EC2 instance
+          scp -i $PRIVATE_KEY -r build/* $EC2_USER@$EC2_HOST:/var/www/frontend-prod/
+
+          # Restart Nginx (or any other server you use)
+          ssh -i $PRIVATE_KEY $EC2_USER@$EC2_HOST 'sudo systemctl restart nginx'
