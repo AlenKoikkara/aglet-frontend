@@ -1,46 +1,40 @@
-name: Deploy Frontend to AWS EC2
+name: Deploy Frontend to EC2
 
 on:
   push:
     branches:
-      - main
-      - dev
+      - main  # Change to "dev" for the dev branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🛎️ Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: 🏗️ Install Dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
         run: npm install
 
-      - name: 📦 Build the Frontend
+      - name: Create .env.production File
         run: |
-          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            npm run build:prod
-            echo "Deploying to Production"
-          else
-            npm run build:dev
-            echo "Deploying to Development"
-          fi
+          echo "REACT_APP_BACKEND_BASE_URL=${{ secrets.REACT_APP_BACKEND_BASE_URL }}" >> .env.production
 
-      - name: 📡 Deploy to EC2
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ec2-user
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "build/*"
-          target: "/var/www/${{ github.ref == 'refs/heads/main' && 'frontend-prod' || 'frontend-dev' }}"
+      - name: Build Project
+        run: npm run build:prod
 
-      - name: 🔄 Restart Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ec2-user
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            sudo systemctl restart ${{ github.ref == 'refs/heads/main' && 'frontend-prod' || 'frontend-dev' }}
+      - name: Deploy to EC2
+        env:
+          PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          HOST: ${{ secrets.EC2_HOST }}
+          USER: ${{ secrets.EC2_USER }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          scp -i private_key.pem -r build/* $USER@$HOST:/var/www/frontend-prod/
+          ssh -i private_key.pem $USER@$HOST "sudo systemctl restart nginx"
