@@ -25,6 +25,11 @@ jobs:
         run: |
           echo "REACT_APP_BACKEND_BASE_URL=${{ secrets.REACT_APP_BACKEND_BASE_URL }}" >> .env.production
           echo "CI=false" >> .env.production
+     
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > /tmp/ec2_key.pem
+          chmod 600 /tmp/ec2_key.pem
 
       - name: Build Project
         run: npm run build:prod
@@ -36,7 +41,7 @@ jobs:
           USER: ${{ secrets.EC2_USER }}
         run: |
           # Copy the build folder to EC2 instance
-          scp -i $PRIVATE_KEY -r build/* $EC2_USER@$EC2_HOST:/var/www/frontend-prod/
+          scp -i /tmp/ec2_key.pem -r build/* $EC2_USER@$EC2_HOST:/var/www/frontend-prod/
 
           # Restart Nginx (or any other server you use)
           ssh -i $PRIVATE_KEY $EC2_USER@$EC2_HOST 'sudo systemctl restart nginx'
