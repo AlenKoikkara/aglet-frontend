@@ -1,16 +1,15 @@
 import React, {useState, useEffect, lazy, Suspense} from "react";
 import "./CategoryPage.scss";
-import requests from "../requests";
 
 import NavBar from "../common/NavBar";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { LinearProgress } from "@mui/material";
 import Footer from "../common/Footer";
 
 const CategoryPage = () => {
   const ProductsWrapper = lazy(() => import('../common/ProductsWrapper'));
   const [queryParam, setQueryParam] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   
   useEffect(() => {
     

@@ -1,31 +1,11 @@
-import React, { useCallback, useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
+import React, { useState } from "react";
 import "./HamburgerMenu.scss";
-
-import { selectUser } from "../features/userSlice";
-
 import LoginDialog from "./LoginDialog";
 import utils from "../utils";
 
 function HamburgerMenu() {
-  const user = useSelector(selectUser);
   const [clicked, setClicked] = useState(false);
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  function handleClose() {
-    setOpen(false);
-  }
-  
-  const navigateTo = (category) => {
-    navigate(utils.getUrlWithParams("/products?", { category: category }));
-  };
 
   const handleClick = () => {
     const element = document.getElementById("hamburger");

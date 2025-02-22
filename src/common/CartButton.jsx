@@ -1,4 +1,4 @@
-import React, { Suspense, useState, lazy } from "react";
+import React from "react";
 import "./CartButton.scss";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,7 +6,7 @@ import { selectCart } from "../features/cartSlice";
 import { selectUser } from "../features/userSlice";
 
 import utils from "../utils";
-import { Button, LinearProgress } from "@mui/material";
+import { Button } from "@mui/material";
 
 function CartButton({ config }) {
 

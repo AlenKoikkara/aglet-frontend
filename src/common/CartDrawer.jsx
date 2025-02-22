@@ -7,7 +7,6 @@ import List from "@mui/material/List";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useSelector } from "react-redux";
 import { selectCart } from "../features/cartSlice";
-import DeleteIcon from '@mui/icons-material/Delete';
 import CartButton from "./CartButton";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Button } from "@mui/material";

@@ -45,7 +45,7 @@ function NavBar() {
   useEffect(() => {
     window.addEventListener("scroll", navbarAnimation);
     return () => window.removeEventListener("scroll", navbarAnimation);
-  }, [prevScrollpos]);
+  });
 
   return (
     <div className={`navbarWrapper ${hide}`}>

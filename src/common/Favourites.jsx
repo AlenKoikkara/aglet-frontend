@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Favourites.scss";
 import { useNavigate } from "react-router-dom";
 import utils from "../utils";
@@ -18,7 +18,7 @@ function Favourites({ config }) {
 
   useEffect(() => {
     utils.getFav(user, dispatch);
-  }, []);
+  });
 
   return (
     <>

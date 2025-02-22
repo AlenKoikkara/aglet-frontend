@@ -1,5 +1,4 @@
 import React from "react";
-import FileUploadRoundedIcon from "@mui/icons-material/FileUploadRounded";
 import { Button } from "@mui/material";
 import image from '../assets/images/banner.png'
 

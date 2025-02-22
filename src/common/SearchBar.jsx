@@ -8,7 +8,7 @@ import axios from "../axios";
 import requests from "../requests";
 
 export const SearchBar = () => {
-  const [searchInput, setSearchInput] = useState();
+  const [searchInput] = useState();
   const [products, setProducts] = useState();
 
   const handleSearch = async (e) => {
@@ -63,7 +63,7 @@ export const SearchBar = () => {
         {products?.length > 0 && (
           <div className="searchBarOutput">
             {products?.map((item) => (
-              <div className="searchItem">
+              <div className="searchItem" key={item._id}>
                 <a href={`/product/${item._id}`}>{item.productName}</a>
               </div>
             ))}
@@ -74,4 +74,3 @@ export const SearchBar = () => {
   );
 };
 
-// export default SearchBar;
