@@ -55,4 +55,4 @@ jobs:
       
       - name: Test SSH connection to EC2
         run: |
-          ssh -i /tmp/ec2_key.pem ec2-user@54.123.45.67 'echo "SSH connection successful!"'
+          ssh -i /tmp/ec2_key.pem ec2-user@44.203.204.86 'echo "SSH connection successful!"'
