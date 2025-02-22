@@ -1,0 +1,46 @@
+name: Deploy Frontend to AWS EC2
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎️ Checkout Code
+        uses: actions/checkout@v3
+
+      - name: 🏗️ Install Dependencies
+        run: npm install
+
+      - name: 📦 Build the Frontend
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            npm run build:prod
+            echo "Deploying to Production"
+          else
+            npm run build:dev
+            echo "Deploying to Development"
+          fi
+
+      - name: 📡 Deploy to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "build/*"
+          target: "/var/www/${{ github.ref == 'refs/heads/main' && 'frontend-prod' || 'frontend-dev' }}"
+
+      - name: 🔄 Restart Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo systemctl restart ${{ github.ref == 'refs/heads/main' && 'frontend-prod' || 'frontend-dev' }}
