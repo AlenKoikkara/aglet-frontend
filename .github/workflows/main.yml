@@ -25,18 +25,18 @@ jobs:
         run: |
           echo "REACT_APP_BACKEND_BASE_URL=${{ secrets.REACT_APP_BACKEND_BASE_URL }}" >> .env.production
           echo "CI=false" >> .env.production
-
+          
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > /tmp/ec2_key.pem
+          chmod 600 /tmp/ec2_key.pem
+      
       - name: Create SSH directory and add EC2 host key
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H 44.203.204.86 >> ~/.ssh/known_hosts
           chmod 700 ~/.ssh
           chmod 644 ~/.ssh/known_hosts
-          
-      - name: Set up SSH key
-        run: |
-          echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > /tmp/ec2_key.pem
-          chmod 600 /tmp/ec2_key.pem
 
       - name: Build Project
         run: npm run build:prod
@@ -52,3 +52,7 @@ jobs:
 
           # Restart Nginx (or any other server you use)
           ssh -i $PRIVATE_KEY $EC2_USER@$EC2_HOST 'sudo systemctl restart nginx'
+      
+      - name: Test SSH connection to EC2
+        run: |
+          ssh -i /tmp/ec2_key.pem ec2-user@54.123.45.67 'echo "SSH connection successful!"'
