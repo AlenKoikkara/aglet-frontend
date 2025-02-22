@@ -1,0 +1,117 @@
+@import "../variables.scss";
+
+.bannerHeader {
+  background-image: url(../assets/images/banner.png);
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  .content {
+    z-index: 1;
+    position: absolute;
+    text-align: start;
+    color: white;
+    .title1,
+    .title2 {
+      width: max-content;
+      border-radius: 20px;
+      color: black;
+      background: white;
+    }
+    .desc {
+      margin-top: 15px;
+    }
+  }
+}
+
+@media (min-width: 767px) {
+  .bannerHeader {
+    height: 680px;
+    width: 1080px;
+    margin-left: auto;
+    animation-name: slide;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    .featuredCarousel {
+      position: absolute;
+      z-index: 2;
+      bottom: 20px;
+    }
+    .content {
+      z-index: 1;
+      position: absolute;
+      top: 220px;
+      left: -40%;
+      text-align: start;
+      color: white;
+      .title1,
+      .title2 {
+        padding: 15px 100px 15px 0px;
+        @include text-style(100px, 600, 101px);
+      }
+      .title2 {
+        position: absolute;
+        top: 105px;
+        .shoeword {
+          background: linear-gradient(to right, #f32170, $primary3,#cf23cf, #eedd44);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+        }
+      }
+      .desc {
+        @include text-style(16px, 400, 22px);
+        position: absolute;
+        top: 230px;
+        width: 270px;
+        color: rgba($color: $primary1, $alpha: .8);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .bannerHeader {
+    width: 85%;
+    height: 280px;
+    margin-left: auto;
+    margin-bottom: 160px;
+    .content {
+      top: 190px;
+      left: -15%;
+      .title1,
+      .title2 {
+        padding: 9px 20px;
+        @include text-style(50px, 600, 51px);
+        width: max-content;
+      }
+      .title2 {
+        position: absolute;
+        top: 53px;
+        .shoeword {
+          background: linear-gradient(to right, #f32170, $primary3,#cf23cf, #eedd44);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+        }
+      }
+      .desc {
+        position: absolute;
+        top: 100px;
+        padding: 5px 20px;
+        color: rgba($color: $primary1, $alpha: .8);
+        @include text-style(15px, 400, 20px);
+        width: 200px;
+      }
+    }
+  }
+}
+
+@keyframes slide {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 65%;
+  }
+}

@@ -1,0 +1,139 @@
+@import "../variables.scss";
+
+.cartDrawer {
+  height: 24px;
+  padding: 20px 20px;
+  .header {
+    width: 100%;
+    margin-bottom: 20px;
+    @include flex(space-between, center);
+    .title {
+      @include text-style(30px, 600, 31px);
+    }
+    .cartClose {
+      cursor: pointer;
+    }
+  }
+  .cartItem {
+    @include flex(center, center);
+    margin: 20px 0px;
+    border: 1px solid $primary1;
+    .cartImage {
+      width: 40%;
+      margin-right: 20px;
+    }
+    .cartBody {
+      .productName {
+        cursor: pointer;
+        margin-bottom: 10px;
+        a {
+          color: $primary1;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .placeOrder {
+    margin: auto;
+    text-transform: none;
+    border: 1px solid rgba($color: $primary3, $alpha: 1.0);
+    padding: 8px 30px;
+    color: $primary3;
+  }
+}
+
+@media (min-width: 767px) {
+  .cartDrawer {
+    .header {
+      .title {
+        @include text-style(30px, 600, 31px);
+      }
+    }
+    .cartItem {
+      width: 400px;
+      .cartBody {
+        .productName {
+          cursor: pointer;
+          margin-bottom: 10px;
+          @include text-style(18px, 600, 18px);
+          a {
+            color: $primary1;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        .productSize {
+          @include text-style(13px, 400, 16px);
+        }
+        .productQty {
+          @include text-style(13px, 400, 16px);
+        }
+        .productprice {
+          margin-top: 5px;
+          @include text-style(18px, 600, 19px);
+        }
+      }
+      .cartremovebutton {
+        margin-left: 30px;
+      }
+    }
+    .placeOrder {
+      margin: auto;
+      text-transform: none;
+      border: 1px solid rgba($color: $primary3, $alpha: 1.0);
+      padding: 8px 30px;
+      color: $primary3;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cartDrawer {
+    .header {
+      .title {
+        @include text-style(30px, 600, 31px);
+      }
+    }
+    .cartItem {
+      width: 270px;
+      .cartBody {
+        .productName {
+          cursor: pointer;
+          margin-bottom: 10px;
+          @include text-style(12px, 600, 12px);
+          a {
+            color: $primary1;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        .productSize {
+          @include text-style(10px, 400, 12px);
+        }
+        .productQty {
+          margin-bottom: 4px;
+          @include text-style(10px, 400, 12px);
+        }
+        .productprice {
+          @include text-style(12px, 600, 13px);
+        }
+      }
+    }
+    .placeOrder {
+      margin: auto;
+      text-transform: none;
+      border: 1px solid rgba($color: $primary3, $alpha: 1.0);
+      padding: 8px 30px;
+      color: $primary3;
+    }
+  }
+}
+
+

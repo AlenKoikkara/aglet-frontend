@@ -1,0 +1,46 @@
+@import "../variables.scss";
+
+.cartfunction {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: $primary4;
+  border-radius: 12px;
+  gap: 10px;
+  .addCart,
+  .removeCart {
+    cursor: pointer;
+    @include flex(center, center);
+    width: max-content;
+    height: 40px;
+    text-transform: none;
+    box-shadow: none;
+    border-radius: 10px;
+    background-color: white;
+    color: $primary1;
+    transition-timing-function: ease-in;
+    transition: 0.5s;
+    &:hover {
+      color: $primary3;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cartfunction {
+    .removeCart {
+      margin-left: 20px;
+      height: 30px;
+     @include text-style(12px, 400, 13px);
+    }
+  }
+}
+
+@media (min-width: 767px) {
+  .cartfunction {
+    .addCart,
+    .removeCart {
+      padding: 10px 30px;
+    }
+  }
+}

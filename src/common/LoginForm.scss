@@ -1,0 +1,101 @@
+@import "../variables.scss";
+
+
+.MuiPaper-root-MuiDialog-paper {
+  border-radius: 20px;
+}
+.dialogTitleImg {
+  margin-bottom: 30px;
+  width: 140px;
+}
+
+.dWrapper {
+  min-width: 460px;
+  padding: 30px !important;
+}
+
+.dialogWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  padding: 30px;
+  height: 300px;
+  .dialogbanner {
+    .logo {
+      width: 200px;
+      margin-bottom: 40px;
+    }
+  }
+  .form {
+    text-align: center;
+    width: 100%;
+    .errorText {
+      max-width: 280px;
+      margin-top: 2px;
+      text-align: start;
+      @include text-style(13px, 400, 14px);
+      color: #FF3333;
+    }
+    .signUpdirect {
+      margin-top: 16px;
+      text-align: start;
+      @include text-style(12px, 400, 13px);
+    }
+    .signUp {
+      cursor: pointer;
+      margin-top: 6px;
+      text-align: start;
+      @include text-style(12px, 400, 13px);
+      text-decoration: underline;
+      color: $primary3;
+    }
+    .submitbutton {
+      margin-top: 30px;
+      padding: 8px 50px;
+      background-color: $primary3;
+      color: $primary4;
+      text-transform: none;
+      .MuiCircularProgress-root {
+        width: 25px !important;
+        height: 25px !important;
+        color: $primary4;
+      }
+    }
+    .or {
+      margin: 20px 0px;
+    }
+    .socialLogin {
+      @include flex(center,center);
+      gap: 24px;
+      .MuiSvgIcon-root.appleIcon {
+        height: 29px;
+        width: 29px;
+        margin-bottom: 5px;
+      }
+      .MuiSvgIcon-root {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dWrapper {
+    min-width: 280px;
+    padding: 50px 30px!important;
+  }
+  .dialogTitle {
+    @include text-style(25px, 700, 26px);
+  }
+  .dialogWrapper {
+    min-width: 230px;
+    padding: 0px;
+    .dialogbanner {
+      display: none;
+    }
+    .form {
+      width: 100%;
+    }
+  }
+}

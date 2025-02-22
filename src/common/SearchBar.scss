@@ -1,0 +1,104 @@
+@import "../variables.scss";
+
+
+.barIcon {
+  height: 35px;
+  cursor: pointer;
+  color: $primary1;
+  transition-timing-function: ease-in !important;
+  transition: 0.5s !important;
+  &:hover {
+    color: $primary3;
+  }
+}
+
+@media (min-width: 766px) {
+  .searchBarbody {
+    .MuiInputBase-root {
+      border-radius: 40px !important;
+    }
+    
+    .MuiInputBase-input {
+      padding: 10px 14px !important;
+    }
+    position: relative;
+    .barInput {
+      width: 35px;
+      overflow: hidden;
+      height: 35px;
+      position: relative;
+      @include flex(flex-end, center);
+    }
+  }
+  .searchDialog {
+    .MuiPaper-root {
+      border-radius: 20px;
+      right: 7.5%;
+    }
+    .searchHeader {
+      @include flex(center, center);
+      .searchText {
+        width: 400px;
+      }
+    }
+  }
+}
+.searchDialog {
+  .MuiPaper-root {
+    position: absolute !important;
+    top: -22px;
+  }
+  .searchHeader {
+    padding: 20px 20px;
+    .searchText {
+      height: 35px;
+      border: none;
+    }
+    input:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  .searchBarOutput {
+    top: 30px;
+    border-radius: 20px;
+    background-color: $primary4;
+    z-index: 100;
+    padding: 20px 20px;
+    gap: 15px;
+    @include flex(center, flex-start, column);
+    .searchItem {
+      margin-top: 10px;
+      a {
+        text-decoration: none;
+        color: rgba($color: $primary1, $alpha: .5);
+        @include text-style(15px, 400, 15px);
+        &:hover {
+        color: rgba($color: $primary1, $alpha: 1);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .searchBarbody {
+    border-bottom-right-radius: 20px;
+    .barInput {
+    }
+  }
+  .searchDialog {
+    .MuiPaper-root {
+      border-radius: 0px;
+      top: -31px;
+      width: 100%;
+      margin: 32px auto;
+    }
+    .searchHeader {
+      @include flex(space-between, center);
+      .searchText {
+        width: 100%;
+      }
+    }
+  }
+}

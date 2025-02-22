@@ -1,0 +1,9 @@
+@import "../variables.scss";
+
+.line {
+  margin-top: 40px;
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(90deg, rgba($color: $primary1, $alpha: 0), rgba($color: $primary1, $alpha: 0.3), rgba($color: $primary1, $alpha: 0));
+  border-radius: 10px;
+}

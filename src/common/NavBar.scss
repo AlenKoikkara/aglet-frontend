@@ -1,0 +1,159 @@
+@import "../variables.scss";
+
+.navbarWrapper {
+  width: 100%;
+  display: block;
+  position: sticky;
+  z-index: 99;
+  transition: all 0.01s;
+  transition-timing-function: ease-in;
+  .wrapper {
+    border-bottom-right-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .menuandlogo {
+      @include flex(flex-start, center);
+      .logo {
+        margin-top: 4px;
+        transition-timing-function: ease-in;
+        transition: 0.5s;
+        cursor: pointer;
+        width: 120px;
+        object-fit: contain;
+      }
+    }
+    .rightsideContent {
+      cursor: pointer;
+      @include flex(flex-start, center);
+      padding: 0px 10px;
+      color: $primary1;
+      .profilepic {
+        margin-left: 40px;
+        width: 50px;
+      }
+      .cartIcon {
+        position: relative;
+        .carticon {
+          transition-timing-function: ease-in;
+          transition: 0.5s;
+          &:hover {
+            color: $primary3;
+          }
+        }
+        .cartCount {
+          position: absolute;
+          @include flex(center, center);
+          @include text-style(12px, 400, 13px);
+          background: $primary3;
+          padding: 5px;
+          width: 10px;
+          height: 10px;
+          top: -4px;
+          right: -7px;
+          color: $primary4;
+          border-radius: 17px;
+        }
+      }
+      .profile {
+        transition-timing-function: ease-in;
+        transition: 0.5s;
+        color: $primary4;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+      }
+      .auth {
+        border-radius: 20px;
+        background-color: rgba($color: $primary3, $alpha: .7);
+        @include flex(center, center);
+        cursor: pointer;
+        @include text-style(13px, 600, 14px);
+        transition-timing-function: ease-in;
+        transition: 0.5s;
+        color: $primary4;
+        .MuiSvgIcon-root {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}
+
+.navfadeout {
+  width: 100%;
+  opacity: 0;
+}
+
+.navfadein {
+  opacity: 1;
+  background: white !important;
+  width: 100%;
+}
+
+
+
+.dialogTitle {
+  @include text-style(40px, 700, 41px);
+}
+
+
+@media (min-width: 767px) {
+  .navbarWrapper {
+    background: black;
+    .wrapper {
+      background-color: white;
+      padding: 15px 30px;
+      .menuandlogo {
+        min-width: 560px;
+        .logo {
+          width: 120px;
+        }
+      }
+      .rightsideContent {
+        gap: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbarWrapper {
+    overflow: hidden;
+    background: black;
+    .wrapper {
+      border-bottom-right-radius: 20px;
+      background-color: white;
+      padding: 20px 20px;
+      .menuandlogo {
+        .navHamburger {
+          margin-right: 10px;
+        }
+        .logo {
+          width: 100px;
+        }
+      }
+      .rightsideContent {
+        gap: 10px;
+        .cartIcon {
+          .cartCount {
+            width: 7px;
+            height: 7px;
+            @include text-style(10px, 400, 10px);
+          }
+        }
+        .profile {
+          width: 24px;
+          height: 24px;
+        }
+        .auth {
+          @include text-style(13px, 600, 14px);
+        }
+      }
+    }
+  }
+}
