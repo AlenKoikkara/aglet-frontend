@@ -31,7 +31,7 @@ export function useAuthHooks() {
       setLoading(false)
       alert(error.message);
     });
-  }, [loading])
+  }, [])
 
   const loginUser = useCallback(async (email, password, handleClose, formData, dispatch) => {
     setLoading(true)
@@ -54,7 +54,7 @@ export function useAuthHooks() {
       alert(error.message);
       setLoading(false)
     })
-  }, [loading])
+  }, [])
 
   return { loading, registerUser, loginUser }
 }

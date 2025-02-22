@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SingleProduct.scss";
 
 import StarIcon from "@mui/icons-material/Star";
@@ -7,8 +7,6 @@ import Button from "@mui/material/Button";
 
 import CartButton from "./CartButton";
 import ShoeCarousel from "./ShoeCarousel";
-import LoginDialog from "./LoginDialog";
-import { LinearProgress } from "@mui/material";
 
 function SingleProduct({ config }) {
   const [size, setSize] = useState();
