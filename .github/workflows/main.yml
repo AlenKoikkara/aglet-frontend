@@ -26,9 +26,12 @@ jobs:
           echo "REACT_APP_BACKEND_BASE_URL=${{ secrets.REACT_APP_BACKEND_BASE_URL }}" >> .env.production
           echo "CI=false" >> .env.production
 
-      - name: Fetch EC2 host key
+      - name: Create SSH directory and add EC2 host key
         run: |
+          mkdir -p ~/.ssh
           ssh-keyscan -H 44.203.204.86 >> ~/.ssh/known_hosts
+          chmod 700 ~/.ssh
+          chmod 644 ~/.ssh/known_hosts
           
       - name: Set up SSH key
         run: |
