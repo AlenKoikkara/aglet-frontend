@@ -1,8 +1,5 @@
 import React from "react";
-
 import "./HomepageBanner.scss";
-import FeaturedCarousel from "./FeaturedCarousel";
-import utils from "../utils";
 
 const HomepageBanner = () => {
   return (

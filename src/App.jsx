@@ -1,9 +1,9 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { login, selectUser } from "./features/userSlice";
+import { login } from "./features/userSlice";
 import ProtectedRoutes from "./common/ProtectedRoutes";
 import PageNotFound from "./common/PageNotFound";
 import utils from "./utils";
@@ -34,7 +34,7 @@ function App() {
       dispatch(addCart(cart));
     }
     return () => {};
-  }, []);
+  });
 
   return (
     <div className="App">

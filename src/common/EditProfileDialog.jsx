@@ -24,12 +24,7 @@ const EditProfileDialog = () => {
     },
     onSubmit: (values) => {},
   });
-
-  const handleSignup = () => {
-    formData.setTouched(true);
-    formData.resetForm();
-  };
-
+  
   return (
     <div className="editProfileDialogbody">
       <Button className="editButton" onClick={() => handleClickOpen()}>

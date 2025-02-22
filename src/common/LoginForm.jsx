@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import authFunctions from "../authFunctions";
 import {
   Button,
   CircularProgress,

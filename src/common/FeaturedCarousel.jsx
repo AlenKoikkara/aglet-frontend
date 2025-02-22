@@ -31,7 +31,7 @@ const FeaturedCarousel = () => {
 
   useEffect(() => {
     fetchData();
-  }, [requests.fetchFeatured]);
+  });
 
   return (
     <div className="featuredCarousel">
@@ -57,7 +57,7 @@ const FeaturedCarousel = () => {
         {featuredProduct?.map((product) => (
           <SwiperSlide key={product._id}>
             <div className="carouselContent">
-              <img className="contentImage" src={product.imageUrl}></img>
+              <img className="contentImage" src={product.imageUrl} alt=""></img>
               <div className="featuredcontent">
                 <div className="description">
                   <div className="brandName">{product.company}</div>

@@ -9,7 +9,7 @@ import Footer from "../common/Footer";
 const CategoryPage = () => {
   const ProductsWrapper = lazy(() => import('../common/ProductsWrapper'));
   const [queryParam, setQueryParam] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   
   useEffect(() => {
     

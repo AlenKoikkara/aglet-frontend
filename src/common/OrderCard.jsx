@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import "./OrderCard.scss";
-import CartButton from "./CartButton";
 
-import image from "../assets/images/banner.png";
 import { useEffect } from "react";
-import utils from "../utils";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import axios from "../axios";
@@ -30,7 +27,7 @@ const OrderCard = () => {
   useEffect(() => {
     getOrders(user);
     return () => {};
-  }, []);
+  });
 
   return (
     <div className="orderCard">
