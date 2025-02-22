@@ -41,7 +41,7 @@ jobs:
           USER: ${{ secrets.EC2_USER }}
         run: |
           # Copy the build folder to EC2 instance
-          scp -i /tmp/ec2_key.pem -r build/* $EC2_USER@$EC2_HOST:/var/www/frontend-prod/
+          scp -i /tmp/ec2_key.pem -r build/* ec2-user@44.203.204.86:/var/www/frontend-prod/
 
           # Restart Nginx (or any other server you use)
           ssh -i $PRIVATE_KEY $EC2_USER@$EC2_HOST 'sudo systemctl restart nginx'
