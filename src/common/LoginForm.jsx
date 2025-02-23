@@ -7,12 +7,10 @@ import {
   TextField,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import GoogleIcon from "@mui/icons-material/Google";
-import AppleIcon from "@mui/icons-material/Apple";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import logo from "../assets/images/logo.png";
 import "./LoginForm.scss";
 import { useAuthHooks } from "../hooks/authHook";
+
 function LoginForm({ handleClose }) {
   const dispatch = useDispatch();
   const [isSignup, setIsSignup] = useState(false);
@@ -154,11 +152,6 @@ function LoginForm({ handleClose }) {
             {loading ? <CircularProgress fontSize="small"></CircularProgress> : (isSignup ? `Sign Up` : `Login`)}
             </Button>
             <div className="or">or</div>
-            <div className="socialLogin">
-              <GoogleIcon fontSize="medium" className="googleIcon"></GoogleIcon>
-              <AppleIcon fontSize="medium" className="appleIcon"></AppleIcon>
-              <FacebookIcon fontSize="medium"></FacebookIcon>
-            </div>
           </form>
         </div>
       </div>
