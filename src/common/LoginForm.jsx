@@ -36,7 +36,7 @@ function LoginForm({ handleClose }) {
     if (!values.password) {
       errors.password = "Required";
     } else if (
-      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/i.test(values.password)
+      /!^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i.test(values.password)
     ) {
       errors.password =
         "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number";
