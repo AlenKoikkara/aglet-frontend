@@ -1,0 +1,96 @@
+@import "../../variables.scss";
+
+.profileCardWrapper {
+  margin-top: 30px;
+  .profileCard {
+    width: 100%;
+    padding: 30px 0px;
+    border-radius: 20px;
+    .displayImage {
+      .profilePic {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 200px;
+      }
+      .editButton {
+        cursor: pointer;
+        padding: 3px;
+        position: absolute;
+        color: $primary3;
+        bottom: 10px;
+        right: 0px;
+        &:hover {
+          color: $primary1;
+        }
+      }
+      .profileHeader {
+        width: 100%;
+        .userName {
+          @include text-style(30px, 600, 35px);
+        }
+        .memberDate {
+          color: rgba($color: $primary1, $alpha: 0.7);
+          @include text-style(15px, 400, 16px);
+        }
+      }
+    }
+    .editProfile {
+      gap: 30px;
+      .editButton {
+        color: $primary1;
+      }
+      .editButton,
+      .logout {
+        text-transform: none;
+      }
+      
+      .logout {
+        color: $primary3;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .profileCardWrapper {
+    .profileCard {
+      @include flex(center, center, column);
+      .displayImage {
+        @include flex(center, center, column);
+        .profilePic {
+
+        }
+        .profileHeader {
+          @include flex(center, center, column);
+        }
+      }
+      .editProfile {
+        margin-top: 20px;
+        @include flex(center, center, column);
+        gap: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .profileCardWrapper {
+    width: 85%;
+    .profileCard {
+      @include flex(space-between, center, row);
+      .displayImage {
+        @include flex(space-between, center, row);
+        .profilePic {
+          margin-right: 30px;
+        }
+        .profileHeader {
+          @include flex(space-between, flex-start, column);
+        }
+      }
+      .editProfile {
+        @include flex(center, flex-start, row);
+      }
+    }
+  }
+}

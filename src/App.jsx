@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { login } from "./features/userSlice";
-import ProtectedRoutes from "./common/ProtectedRoutes";
-import PageNotFound from "./common/PageNotFound";
+import ProtectedRoutes from "./components/layout/ProtectedRoutes";
+import PageNotFound from "./components/layout/PageNotFound";
 import utils from "./utils";
 import { addCart } from "./features/cartSlice";
 import { LinearProgress } from "@mui/material";

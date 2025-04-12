@@ -1,17 +1,17 @@
 import React, { Suspense, lazy, useState } from "react";
 // import SingleProduct from "../common/SingleProduct";
-import NavBar from "../common/NavBar";
+import NavBar from "../components/layout/NavBar";
 import { useEffect } from "react";
 import axios from "../axios";
 import requests from "../requests";
 
 import "./ProductPage.scss";
-import Footer from "../common/Footer";
+import Footer from "../components/layout/Footer";
 import { useParams } from "react-router-dom";
 import { LinearProgress } from "@mui/material";
 
 const ProductPage = () => {
-  const SingleProduct = lazy(() => import("../common/SingleProduct"));
+  const SingleProduct = lazy(() => import("../components/product/SingleProduct"));
 
   const [singleProduct, setSingleProduct] = useState();
   const [featured, setFeatured] = useState();
