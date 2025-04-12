@@ -6,19 +6,17 @@ import { useSearchParams } from "react-router-dom";
 import { LinearProgress } from "@mui/material";
 import Footer from "../components/layout/Footer";
 
+const ProductsWrapper = lazy(() => import('../components/product/ProductsWrapper'));
+
 const CategoryPage = () => {
-  const ProductsWrapper = lazy(() => import('../components/product/ProductsWrapper'));
-  const [queryParam, setQueryParam] = useState(null);
   const [searchParams] = useSearchParams();
   
   useEffect(() => {
-    
-    const param = searchParams.get('category');
-    setQueryParam(param);
+    // This effect is now empty since we're not using queryParam
     return () => {
       
     }
-  }, [queryParam])
+  }, [searchParams])
   
   return (
     <div className="body">

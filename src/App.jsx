@@ -10,11 +10,12 @@ import utils from "./utils";
 import { addCart } from "./features/cartSlice";
 import { LinearProgress } from "@mui/material";
 
+const HomePage = lazy(() => import("./pages/HomePage"));
+const CategoryPage = lazy(() => import("./pages/CategoryPage"));
+const ProductPage = lazy(() => import("./pages/ProductPage"));
+const UserPage = lazy(() => import("./pages/UserPage"));
+
 function App() {
-  const HomePage = lazy(() => import("./pages/HomePage"));
-  const CategoryPage = lazy(() => import("./pages/CategoryPage"));
-  const ProductPage = lazy(() => import("./pages/ProductPage"));
-  const UserPage = lazy(() => import("./pages/UserPage"));
   const dispatch = useDispatch();
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -34,7 +35,7 @@ function App() {
       dispatch(addCart(cart));
     }
     return () => {};
-  });
+  }, [dispatch, user]);
 
   return (
     <div className="App">

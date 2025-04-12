@@ -13,6 +13,7 @@ import { selectUser } from "../../features/userSlice";
 import { selectFav } from "../../features/favSlice";
 
 const LoginDialog = lazy(() => import("../ui/LoginDialog"));
+
 function ShoeCarousel({ config }) {
   const [open, setOpen] = useState(false);
   const scrollable = useRef(null);
@@ -52,8 +53,8 @@ function ShoeCarousel({ config }) {
         fontSize="large"
       ></ChevronLeftRoundedIcon>
       <div className="shoeRows" ref={scrollable}>
-        {config.shoes?.map((shoe) => (
-          <div key={shoe._id} className="productWrapper">
+        {config.shoes?.map((shoe, index) => (
+          <div key={`${shoe._id}-${index}`} className="productWrapper">
             <div className="imgCart">
               <img
                 onClick={() => navigateTo(shoe._id)}
