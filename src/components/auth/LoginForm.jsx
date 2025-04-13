@@ -24,8 +24,11 @@ function LoginForm({ handleClose }) {
     formData.setTouched(true);
     formData.resetForm();
   };
+  
   const validate = (values) => {
     const errors = {};
+    
+    // Only validate email and password for login
     if (!values.email) {
       errors.email = "Required";
     } else if (
@@ -36,20 +39,24 @@ function LoginForm({ handleClose }) {
 
     if (!values.password) {
       errors.password = "Required";
-    } else if (
-      /!^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i.test(values.password)
-    ) {
-      errors.password =
-        "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number";
     }
-
+    
+    // Additional validations only for signup
     if (isSignup) {
-      if (!values.confirmPassword && isSignup) {
+      if (
+        /!^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i.test(values.password)
+      ) {
+        errors.password =
+          "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number";
+      }
+      
+      if (!values.confirmPassword) {
         errors.confirmPassword = "Required";
       } else if (values.confirmPassword !== values.password) {
         errors.confirmPassword = "Password does not match";
       }
     }
+    
     return errors;
   };
 
@@ -115,7 +122,7 @@ function LoginForm({ handleClose }) {
               value={formData.values.password}
               onChange={formData.handleChange}
             />
-            {formData.errors.password ? (
+            {formData.errors.password && isSignup ? (
               <div className="errorText">{formData.errors.password}</div>
             ) : null}
 
