@@ -11,7 +11,6 @@ const authFunctions = {
       dispatch(logout())
       dispatch(removeCart([]))
       localStorage.removeItem("user");
-      console.log('userSigned out')
     })
     .catch((error) => {
       console.log(error.message)

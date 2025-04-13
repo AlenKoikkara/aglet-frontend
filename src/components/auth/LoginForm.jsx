@@ -158,7 +158,6 @@ function LoginForm({ handleClose }) {
             > 
             {loading ? <CircularProgress fontSize="small"></CircularProgress> : (isSignup ? `Sign Up` : `Login`)}
             </Button>
-            <div className="or">or</div>
           </form>
         </div>
       </div>
