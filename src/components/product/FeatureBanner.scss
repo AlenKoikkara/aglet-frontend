@@ -1,0 +1,75 @@
+@import "../../variables.scss";
+
+
+.featureBannerWrapper {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  position: relative;
+  video {
+    width: 100%;
+  }
+  .content {
+    text-align: start;
+    position: absolute;
+    bottom: 60px;
+    left: 50px;
+    color: white;
+    .title {
+      margin-bottom: 15px;
+      @include text-style(35px, 700, 36px)
+    }
+    .desc {
+      @include text-style(20px, 400, 26px)  
+    }
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      .mens, .womens, .kids {
+        cursor: pointer;
+        background-color: white;
+        color: rgba($color: $primary3, $alpha: 1);
+        padding: 10px 30px;
+        transition-timing-function: ease-in;
+        transition: 0.5s;
+        text-transform: none;
+        &:hover {
+          color: $primary3;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .featureBannerWrapper {
+    .content {
+      bottom: 40px;
+      left: 30px;
+      .title {
+        margin-bottom: 5px;
+        @include text-style(25px, 700, 26px);
+      }
+      .desc {
+        margin-bottom: 10px;
+        @include text-style(15px, 400, 16px);
+      }
+      .buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 20px;
+        .mens, .womens, .kids {
+          @include text-style(10px, 400, 11px);
+          cursor: pointer;
+          background-color: white;
+          color: black;
+          padding: 10px 15px;
+          &:hover {
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}

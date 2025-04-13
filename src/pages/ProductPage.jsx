@@ -1,24 +1,23 @@
-import React, { Suspense, lazy, useState } from "react";
+import React, { Suspense, lazy, useState, useEffect, useCallback } from "react";
 // import SingleProduct from "../common/SingleProduct";
-import NavBar from "../common/NavBar";
-import { useEffect } from "react";
+import NavBar from "../components/layout/NavBar";
 import axios from "../axios";
 import requests from "../requests";
 
 import "./ProductPage.scss";
-import Footer from "../common/Footer";
+import Footer from "../components/layout/Footer";
 import { useParams } from "react-router-dom";
 import { LinearProgress } from "@mui/material";
 
-const ProductPage = () => {
-  const SingleProduct = lazy(() => import("../common/SingleProduct"));
+const SingleProduct = lazy(() => import("../components/product/SingleProduct"));
 
+const ProductPage = () => {
   const [singleProduct, setSingleProduct] = useState();
   const [featured, setFeatured] = useState();
 
   let { id } = useParams();
 
-  async function fetchSingleProduct() {
+  const fetchSingleProduct = useCallback(async () => {
     await axios
       .get(requests.fetchProduct(id))
       .then((res) => {
@@ -28,9 +27,9 @@ const ProductPage = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }
+  }, [id]);
 
-  async function fetchFeatured() {
+  const fetchFeatured = useCallback(async () => {
     await axios
       .get(requests?.fetchFeatured)
       .then((res) => {
@@ -40,13 +39,13 @@ const ProductPage = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }
+  }, []);
 
   useEffect(() => {
     fetchSingleProduct();
     fetchFeatured();
     return () => {};
-  }, [id]);
+  }, [id, fetchSingleProduct, fetchFeatured]);
 
   return (
     <div className="body">
@@ -58,7 +57,6 @@ const ProductPage = () => {
               id: id,
               singleProduct: singleProduct,
               featured: featured,
-              setSingleProduct: setSingleProduct,
             }}
           ></SingleProduct>
         )}

@@ -204,7 +204,7 @@ const utils = {
 
   getFav: async (user, dispatch) => {
     await axios.get(requests.getFavourite(user.userId)).then((res) => {
-      if (res.data.favourites) {
+      if (res?.data?.favourites) {
         dispatch(toggleFav(res.data?.favourites));
       }
     }).catch((error => {

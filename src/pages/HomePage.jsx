@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 import "./HomePage.scss";
 
-import NavBar from "../common/NavBar";
-import HomepageBanner from "../common/HomepageBanner";
-import ShoeCarousel from "../common/ShoeCarousel";
+import NavBar from "../components/layout/NavBar";
+import HomepageBanner from "../components/product/HomepageBanner";
+import ShoeCarousel from "../components/product/ShoeCarousel";
 import requests from "../requests";
-import FeatureBanner from "../common/FeatureBanner";
-import Footer from "../common/Footer";
+import FeatureBanner from "../components/product/FeatureBanner";
 import axios from "../axios";
+import Footer from "../components/layout/Footer";
 
 const HomePage = () => {
   const [basketballShoes, setBasketballshoes] = useState();

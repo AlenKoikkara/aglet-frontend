@@ -1,8 +1,8 @@
 import React from "react";
 import "./UserPage.scss";
-import NavBar from "../common/NavBar";
-import UserProfile from "../common/UserProfile";
-import Footer from "../common/Footer";
+import NavBar from "../components/layout/NavBar";
+import UserProfile from "../components/ui/UserProfile";
+import Footer from "../components/layout/Footer";
 
 export const UserPage = () => {
   return (

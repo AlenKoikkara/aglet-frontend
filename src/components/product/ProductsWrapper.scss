@@ -1,0 +1,121 @@
+@import "../../variables.scss";
+
+.categoryWrapper {
+  position: relative;
+  padding: 40px 0px;
+  .titleContent {
+    @include flex(space-between, center);
+    .title {
+      text-align: start;
+    }
+    .filterOptions {
+      gap: 40px;
+      @include flex(center, space-between);
+    }
+  }
+  .content {
+    margin-top: 20px;
+    .productsList {
+      max-width: 100%;
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: auto auto auto;
+      .productWrapper {
+        cursor: pointer;
+        margin-bottom: 20px;
+        padding: 20px;
+        max-width: 350px;
+        transition-timing-function: ease;
+        transition: 0.3s;
+        border-radius: 30px;
+        .imgCart {
+          position: relative;
+          .shoeimg {
+            border-radius: 20px;
+            pointer-events: auto;
+            object-fit: cover;
+            max-width: 100%;
+            height: auto;
+          }
+          .favIcon {
+            cursor: pointer;
+            pointer-events: auto;
+            top: 20px;
+            right: 20px;
+            position: absolute;
+            .MuiSvgIcon-root {
+              color: $primary3;
+            }
+          }
+        }
+        .shoedetails {
+          padding: 10px 10px 30px;
+          display: flex;
+          justify-content: space-between;
+          color: $primary1;
+          .desc {
+            .productname,
+            .division {
+              text-align: left;
+            }
+            .productname {
+              @include text-style(18px, 600, 19px);
+            }
+            .division {
+              color: rgba($color: $primary1, $alpha: 0.5);
+              margin-top: 5px;
+              @include text-style(15px, 400, 16px);
+            }
+          }
+          .price {
+            color: $primary3;
+            @include text-style(18px, 600, 19px);
+          }
+        }
+      }
+      .productWrapper:hover {
+        transform: scale(1.09);
+        box-shadow: 0 4px 30px rgba($color: $primary3, $alpha: 0.15);
+      }
+    }
+    .MuiCircularProgress-root {
+      margin: 30px;
+      width: 30px !important;
+      height: 30px !important;
+      color: $primary3;
+    }
+    .circularProgress {
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .categoryWrapper {
+    padding: 20px 30px;
+    .titleContent {
+      .title {
+        @include text-style(35px, 600, 36px);
+      }
+    }
+    .content {
+      .productsList {
+        grid-template-columns: auto;
+      }
+    }
+  }
+}
+
+@media (min-width: 767px) {
+  .categoryWrapper {
+    padding: 0px 30px;
+    .titleContent {
+      padding: 40px;
+      .title {
+        @include text-style(40px, 600, 41px);
+      }
+    }
+    .content {
+      padding: 0px 40px;
+    }
+  }
+}
